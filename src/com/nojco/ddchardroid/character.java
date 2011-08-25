@@ -43,8 +43,7 @@ public class character implements Serializable  {
 	public defenses defenses;
 	public speed speed;
 	public String specialMovement;
-	public Integer passiveInsight;
-	public Integer passivePerception;
+	public senses senses;
 	public health health;
 	public Integer actionPoints;
 	public skills skills;
@@ -75,6 +74,7 @@ public class character implements Serializable  {
     private TextView healthPage;
     private TextView skillsPage;
     private TextView speedPage;
+    private TextView sensesPage;
     
     public vertLayout pages;
     
@@ -135,17 +135,20 @@ public class character implements Serializable  {
 		health 		= new health(c);
 		skills 		= new skills(c);
         speed 		= new speed(c);
+        senses      = new senses(c);
         
         abilityPage  = newTV("ABILITY SCORES", 'a', c);
         defensesPage = newTV("DEFENSE SCORES", 'd', c);
         healthPage   = newTV("HEALTH INFO",    'h', c);
         skillsPage   = newTV("SKILLS",         's', c);
         speedPage    = newTV("MOVEMENT",       'w', c);
+        sensesPage   = newTV("SENSES",         'p', c);
         pages.addView(abilityPage);
         pages.addView(defensesPage);
         pages.addView(healthPage);
         pages.addView(skillsPage);
         pages.addView(speedPage);
+        pages.addView(sensesPage);
 	}
 	
 	private TextView newTV(String label, final char page, Context c)
@@ -188,6 +191,7 @@ public class character implements Serializable  {
         			pages.addView(healthPage); 
         			pages.addView(skillsPage);
         			pages.addView(speedPage);
+        	        pages.addView(sensesPage);
         			
         			currentPage=p; 
     			}
@@ -208,6 +212,7 @@ public class character implements Serializable  {
         			pages.addView(healthPage); 
         			pages.addView(skillsPage);
         	        pages.addView(speedPage);
+        	        pages.addView(sensesPage);
         			
         			currentPage=p; 
     			}
@@ -228,6 +233,7 @@ public class character implements Serializable  {
         			pages.addView(health); 
         			pages.addView(skillsPage);
         			pages.addView(speedPage);
+        	        pages.addView(sensesPage);
         			
         			currentPage=p; 
         		}
@@ -248,6 +254,7 @@ public class character implements Serializable  {
         			pages.addView(skillsPage);
         			pages.addView(skills); 
         			pages.addView(speedPage);
+        	        pages.addView(sensesPage);
         			
         			currentPage=p; 
         		}
@@ -268,6 +275,27 @@ public class character implements Serializable  {
         	        pages.addView(skillsPage);
         	        pages.addView(speedPage);
         	        pages.addView(speed); 
+        	        pages.addView(sensesPage);
+        			currentPage=p; 
+        		}
+        		break;
+        	case 'p':
+        		if (currentPage == 'p')
+        		{
+        			pages.removeView(speed); 
+        			
+        			currentPage='m';
+        		}
+        		else
+        		{
+        			pages.removeAllViews(); 
+        			pages.addView(abilityPage);
+        			pages.addView(defensesPage);
+        			pages.addView(healthPage); 
+        	        pages.addView(skillsPage);
+        	        pages.addView(speedPage);
+        	        pages.addView(sensesPage);
+        	        pages.addView(senses); 
         			currentPage=p; 
         		}
         		break;

@@ -65,6 +65,14 @@ public class abilityStat extends LinearLayout {
 		init (c,n);
 	}
 	
+	public abilityStat (Context c, Integer s, String n, Integer b)
+	{
+		super (c);
+		score = new stat (c, s);
+		base  = new stat (c, b);
+		init (c,n);
+	}
+	
 	private void init (Context c, String n)
 	{
 		addView(score.textBox);
@@ -91,6 +99,11 @@ public class abilityStat extends LinearLayout {
         addView(mod);
         addView(base.textBox);
         
+	}
+	
+	public String toString()
+	{
+		return score.toString() + ":" + base.toString();
 	}
 	
 }

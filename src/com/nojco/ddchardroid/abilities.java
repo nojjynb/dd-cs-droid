@@ -45,6 +45,18 @@ public class abilities extends LinearLayout {
 		init(c);
 	}
 	
+	public abilities(Context c, Integer s, Integer cl, Integer d, Integer i, Integer w, Integer ch, Integer b) {
+		// TODO Auto-generated constructor stub
+		super(c);
+		strength 		= new abilityStat (c, s,  "STR", b);
+		constitution 	= new abilityStat (c, cl, "CON", b);
+		dexterity 		= new abilityStat (c, d,  "DEX", b);
+		intelligence 	= new abilityStat (c, i,  "INT", b);
+		wisdom 			= new abilityStat (c, w,  "WIS", b);
+		charisma 		= new abilityStat (c, ch, "CHA", b);
+		init(c);
+	}
+	
 	private void init (Context c)
 	{
 		setLayoutParams(new LinearLayout.LayoutParams(
@@ -192,6 +204,13 @@ public class abilities extends LinearLayout {
 	public Integer getChaMod ()
 	{
 		return charisma.getMod();
+	}
+	
+	public String toString()
+	{
+		String tmp = new String();
+		tmp = strength.toString() + "," + constitution.toString() + "," + dexterity.toString() + "," + intelligence.toString() + "," + wisdom.toString() + "," + charisma.toString();
+		return tmp;
 	}
 
 }
